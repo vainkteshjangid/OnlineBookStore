@@ -35,11 +35,7 @@ public class BookStoreDaoImpl implements BookStoreDao {
 		try {
 			BookCategory res=query.getSingleResult();
 		}catch(NoResultException e) {
-			String str2="update BookCategory category set category.categoryName=:newCategoryName where category.categoryId=:id";
-			Query query2=em.createQuery(str2);
-			query2.setParameter("newCategoryName", category.getCategoryName());
-			query2.setParameter("id", category.getCategoryId());
-			int result=query2.executeUpdate();
+			em.merge(category);
 			return "Category updated successfully";
 		}
 		return "There is already a category named "+category.getCategoryName();
