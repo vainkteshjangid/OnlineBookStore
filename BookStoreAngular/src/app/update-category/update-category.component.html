@@ -4,7 +4,7 @@
 </div>
 
 <div class="row justify-content-center jumbotron">
-  <form name="updateCategory" #updateCategory="ngForm" (ngSubmit)=updateCategory()>
+  <form name="updateCategory" #updateCategory="ngForm" (ngSubmit)=updateCategoryService(this.updatedCategory)>
     <div style="text-align: center;margin-bottom: 25px;"> 
       <h3>Update category information</h3>
     </div>
@@ -13,21 +13,21 @@
       <tr>
         <td>Category Id </td>
         <td>
-          <label name="category.categoryId" type="number" [(ngModel)]="category.categoryId" #categoryId="ngModel" class="form-control"></label>
+          <label  class="form-control">{{currentCategory.categoryId}}</label>
         </td>
       </tr>
 
       <tr>
         <td>Category Name </td>
         <td>
-          <label name="category.categoryName" type="text" [(ngModel)]="category.categoryName" #Name="ngModel" class="form-control"></label>
+          <label class="form-control">{{currentCategory.categoryName}}</label>
         </td>
       </tr>
 
       <tr>
         <td>New Category Name </td>
         <td>
-          <input name="category.categoryName" type="text" [(ngModel)]="category.categoryName" #Name="ngModel" class="form-control" autofocus required maxlength="10" minlength="5">
+          <input type="text" placeholder="" id="newCategoryName" name="newCategoryName" required [(ngModel)]="this.updatedCategory.categoryName" class="form-control" #Name="ngModel" maxlength="10" autofocus minlength="5">
         </td>
       </tr>
 
@@ -43,7 +43,7 @@
     <div style="margin-top: 50px;">
       <tr>
         <td style="text-align: center;">
-          <button class="btn btn-info" [disabled]="!CreateCategory.valid" type="submit">save update</button>
+          <button class="btn btn-info" [disabled]="!Name.valid" type="submit">save update</button>
           <button class="btn btn-light" style="margin-left: 35px">cancel</button>
         </td>
       </tr>
@@ -53,11 +53,11 @@
   </form>
 </div>
 
-<div *ngIf="showMessage" class="text-center">
-  <h2>{{message}}</h2>
+<div *ngIf="showSuccessMessage" class="text-center">
+  <h2>Success : {{successMessage}}</h2>
  </div>
 
- <div *ngIf="showError" class="text-center">
-  <h2>{{errorMsg}}</h2>
+ <div *ngIf="showErrorMessage" class="text-center">
+  <h2>Error : {{errorMessage}}</h2>
  </div>
 
