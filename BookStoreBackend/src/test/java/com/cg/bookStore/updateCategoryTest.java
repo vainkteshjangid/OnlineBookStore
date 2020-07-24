@@ -64,7 +64,7 @@ public class updateCategoryTest {
 		String expectedResult="Category updated successfully";
 		Mockito.when(
 				service.createCategory(Mockito.any(BookCategory.class))).thenReturn(expectedResult);
-		RequestBuilder requestBuilder = MockMvcRequestBuilders.put("/manageCategory/update").accept(MediaType.APPLICATION_JSON).content(categoryJson).contentType(MediaType.APPLICATION_JSON);
+		RequestBuilder requestBuilder = MockMvcRequestBuilders.put("manageCategory/update").accept(MediaType.APPLICATION_JSON).content(categoryJson).contentType(MediaType.APPLICATION_JSON);
 		
 		mockMvc.perform(requestBuilder).andExpect(MockMvcResultMatchers.content()
                 .string("Category updatd successfully")).andDo(MockMvcResultHandlers.print());

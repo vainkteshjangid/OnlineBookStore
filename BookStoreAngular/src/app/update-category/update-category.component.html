@@ -1,0 +1,91 @@
+
+<!-- <div class="col-md-6"  style=" width: 500px; display: block;margin: auto;border-color: black;border-style: solid;border-width: 1px;border-radius: 10px; padding-top: 20px;margin-top: 20px;">
+  <form #updateCategoryForm="ngForm">
+    <div style="margin-top: 15px;">
+      <label>Category ID </label>
+      <label type="number"  id="categoryId" name="categoryId" required  class="form-control">{{currentCategory.categoryId}}</label>
+    </div>
+  
+    <div style="margin-top: 15px;">
+      <label>Category Name </label>
+      <label type="text" id="categoryName" name="categoryName" required  class="form-control">{{this.currentCategory.categoryName}}</label>
+    </div>
+    
+    <div style="margin-top: 15px;">
+      <label>New Category Name </label>
+      <input type="text" placeholder="Enter category name" id="newCategoryName" name="newCategoryName" [(ngModel)]="updatedCategory.categoryName" required class="form-control" #newCategory="ngModel">
+    </div>
+    <div class="alert alert-danger" *ngIf="newCategory.touched && newCategory.errors?.required">! This field is required</div>
+  
+    <div style="margin-top: 15px;margin-bottom: 15px;">
+      <tr>
+       <button class="btn btn-primary">save update</button>
+       <button class="btn btn-light" style="margin-left: 20px;">cancel</button>
+      </tr>
+    </div>
+  </form> 
+</div> -->
+<!-- temp2 -->
+<div class="row justify-content-center jumbotron" style="padding: unset;">
+  <span class="btn btn-primary" style="width: 100%;" routerLink="/displayCategory" role="button">Back</span>     
+</div>
+
+<div class="row justify-content-center jumbotron">
+  <form name="updateCategory" #updateCategory="ngForm" (ngSubmit)=updateCategory()>
+    <div style="text-align: center;margin-bottom: 25px;"> 
+      <h3>Update category information</h3>
+    </div>
+
+    <table>
+      <tr>
+        <td>Category Id </td>
+        <td>
+          <label name="category.categoryId" type="number" [(ngModel)]="category.categoryId" #categoryId="ngModel" class="form-control"></label>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Category Name </td>
+        <td>
+          <label name="category.categoryName" type="text" [(ngModel)]="category.categoryName" #Name="ngModel" class="form-control"></label>
+        </td>
+      </tr>
+
+      <tr>
+        <td>New Category Name </td>
+        <td>
+          <input name="category.categoryName" type="text" [(ngModel)]="category.categoryName" #Name="ngModel" class="form-control" autofocus required maxlength="10" minlength="5">
+        </td>
+      </tr>
+
+      <div>
+        <div *ngIf="Name.invalid && (Name.dirty || Name.touched)">
+          <div *ngIf="Name.errors.required" style="color: red;">Please Enter a category Name</div>
+          <div *ngIf="Name.errors.minlength" style="color: red;">Category should be minimum 5 characters</div>
+          <div *ngIf="Name.errors.maxlength" style="color: red;">Category should be maximum 30 characters</div>
+        </div>
+      </div>
+    </table>
+
+    <div style="margin-top: 50px;">
+      <tr>
+        <td style="text-align: center;">
+          <button class="btn btn-info" [disabled]="!CreateCategory.valid" type="submit">save update</button>
+          <button class="btn btn-light" style="margin-left: 35px">cancel</button>
+        </td>
+      </tr>
+    </div>
+    
+    
+  </form>
+</div>
+
+<div *ngIf="showMessage" class="text-center">
+  <h2>{{message}}</h2>
+ </div>
+
+ <div *ngIf="showError" class="text-center">
+  <h2>{{errorMsg}}</h2>
+ </div>
+
+<!--tiojfodjl-->
