@@ -4,9 +4,9 @@
 </div>
 
 <div class="row justify-content-center jumbotron">
-  <form name="updateCategory" #updateCategory="ngForm" (ngSubmit)=updateCategoryService(this.updatedCategory)>
+  <form name="updateCategory" #updateCategory="ngForm" (ngSubmit)=saveCategoryUpdate(this.updatedCategory)>
     <div style="text-align: center;margin-bottom: 25px;"> 
-      <h3>Update category information</h3>
+      <h3>Update Category Information</h3>
     </div>
 
     <table>
@@ -54,7 +54,7 @@
 </div>
 
 <div *ngIf="showSuccessMessage" class="text-center">
-  <h2>Success : {{successMessage}}</h2>
+  <h2 style="color:seagreen;">{{successMessage}}</h2>
  </div>
 
  <div *ngIf="showErrorMessage" class="text-center">

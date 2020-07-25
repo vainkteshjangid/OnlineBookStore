@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ManageCategoryService } from '../manage-category.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { BookCategory } from 'src/assets/BookCategory';
+import { CommunicationService } from '../communication.service';
 
 @Component({
   selector: 'app-update-category',
@@ -17,21 +18,22 @@ export class UpdateCategoryComponent implements OnInit {
   showSuccessMessage:boolean;
   showErorrMessage:boolean;
 
-  constructor(private service:ManageCategoryService) { 
-    this.currentCategory.categoryId=100;
-    this.currentCategory.categoryName;
+  constructor(private service:ManageCategoryService,private communicationService:CommunicationService) { 
     this.updatedCategory.categoryName="";
   }
 
   ngOnInit() {
+   this.getCategoryForUpdate();
   }
 
-  updateCategory(category:BookCategory){
-    this.currentCategory.categoryId=category.categoryId;
-    this.currentCategory.categoryName=category.categoryName;
+  getCategoryForUpdate(){
+    this.communicationService.getCategoryForUpdate().subscribe(v=>{
+      this.currentCategory.categoryId=v.categoryId;
+      this.currentCategory.categoryName=v.categoryName;
+    })
   }
 
-  updateCategoryService():void{
+  saveCategoryUpdate():void{
     this.updatedCategory.categoryId=this.currentCategory.categoryId;
     this.service.updateCategory(this.updatedCategory).subscribe(data=>{
       this.successMessage=data,

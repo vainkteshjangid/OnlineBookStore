@@ -6,17 +6,21 @@ import { UpdateCategoryComponent } from './update-category/update-category.compo
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { DisplayCategoryComponent } from './display-category/display-category.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UpdateCategoryComponent
+    UpdateCategoryComponent,
+    DisplayCategoryComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
