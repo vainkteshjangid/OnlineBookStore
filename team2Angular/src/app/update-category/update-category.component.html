@@ -1,0 +1,57 @@
+<div> 
+  <div id="formData" class="col-xl-6 col-lg-6 col-md-10 col-sm-10 mx-auto  form p-3 jumbotron">
+    <u> <h2 class="text-center" >Update category information</h2></u>
+    <br>
+    <form name="UpdateCategory" #UpdateCategory="ngForm" (ngSubmit)="saveCategoryUpdate(this.updatedCategory)">
+    <table>
+      <tr>
+        <td>Category Id </td>
+        <td>
+          <label class="form-control border border-dark">{{currentCategory.categoryId}}</label>
+        </td>
+      </tr>
+  
+      <tr>
+        <td>Category name </td>
+        <td>
+          <label class="form-control border border-dark">{{currentCategory.categoryName}}</label>
+        </td>
+      </tr>  
+
+      <tr>
+        <td>New Category Name </td>
+        <td>
+          <input type="text" placeholder="" id="newCategoryName" name="newCategoryName" required [(ngModel)]="this.updatedCategory.categoryName" class="form-control border border-dark" #Name="ngModel" maxlength="10" autofocus minlength="5">
+        </td>
+      </tr>
+  </table>
+  <br>
+  <div class="text-center">
+    <button class="btn btn-dark" [disabled]="!UpdateCategory.valid" type="submit">Save change</button>
+    <span class="btn btn-light"  routerLink="/displayCategory" role="button">Back</span> 
+  </div>
+ 
+  </form>
+  
+  <br>
+  <div class="text-center">
+    <div *ngIf="Name.invalid && (Name.dirty || Name.touched)">
+      <div *ngIf="Name.errors.required" style="color: red;">Please Enter a category Name</div>
+      <div *ngIf="Name.errors.minlength" style="color: red;">Category should be minimum 5 characters</div>
+      <div *ngIf="Name.errors.maxlength" style="color: red;">Category should be maximum 30 characters</div>
+    </div>
+  </div>  
+  </div>
+  </div>
+
+  <div *ngIf="showSuccessMessage" class="text-center" style="color: seagreen;">
+    <h2 >{{successMessage}}</h2>
+   </div>
+  
+   <div *ngIf="showErorrMessage" class="text-center" style="color: red;">
+    <h2>{{errorMessage}}</h2>
+   </div>
+
+
+  
+  

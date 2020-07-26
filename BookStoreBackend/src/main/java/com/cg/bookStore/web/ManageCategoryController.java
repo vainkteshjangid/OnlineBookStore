@@ -36,7 +36,7 @@ public class ManageCategoryController {
 		return service.updateCategory(category);
 	}
 	
-	@GetMapping("manageCategory/display/{categoryId}")
+	@GetMapping("/manageCategory/displayAllCategory")
 	public String displayCategory(@PathVariable(name="categoryId") int categoryId) throws CategoryException {
 		return service.displayCategory(categoryId);
 	}
